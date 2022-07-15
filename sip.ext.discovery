@@ -1,0 +1,52 @@
+#!/usr/bin/perl
+ 
+$first = 1;
+
+print "{\n";
+print "\"data\":[\n"; 
+
+for (`asterisk -rrrrx "sip show peers" | grep "OK" | grep -v "Name" | grep -v "-" | grep -v " sip peers "`)
+{
+	($sipname)   = m/(\w*)/x;
+	($siphost)   = m/\S* \s* (\S*)/x;
+	($sipport)   = m/\S* \s* \S* \s* \S* \s* \S* \s* \S* \s* \S* \s* (\S*)/x;
+	($sipstatus) = m/\S* \s* \S* \s* \S* \s* \S* \s* \S* \s* \S* \s* \S* \s* (\S*)/x;
+	($sipping)   = m/\X*\( (\X*[0-9])/x;
+
+	print ",\n" if not $first;
+	$first = 0;
+
+	print "\t{";
+	print "\"{#SIPNAME}\":\"$sipname\",";
+	print "\"{#SIPHOST}\":\"$siphost\",";
+	print "\"{#SIPPORT}\":\"$sipport\",";
+	print "\"{#SIPSTATUS}\":\"$sipstatus\",";
+	print "\"{#SIPPING}\":\"$sipping\"}";
+}
+
+for (`asterisk -rrrrx "sip show peers" | grep -v "OK" | grep -v "Name" | grep -v "-" | grep -v " sip peers "`)
+{
+	($sipname)   = m/(\w*)/x;
+	($siphost)   = m/\S* \s* (\S*)/x;
+		$siphost =~ s/\(Unspecified\)/Desconhecido/;
+	($sipport)   = m/\S* \s* \S* \s* \S* \s* \S* \s* \S* \s* \S* \s* (\S*)/x;
+		$sipport =~ s/0/Offline/;
+	($sipstatus) = m/\S* \s* \S* \s* \S* \s* \S* \s* \S* \s* \S* \s* \S* \s* (\S*)/x;
+		$sipstatus =~ s/UNKNOWN/Offline/;
+	($sipping)   = m/\S* \s* \S* \s* \S* \s* \S* \s* \S* \s* \S* \s* \S* \s* (\S*)/x;
+		$sipping =~ s/UNKNOWN/0/;
+		$sipping =~ s/UNREACHABLE/00/;
+		$sipping =~ s/Unmonitored/000/;
+
+	print ",\n" if not $first;
+	$first = 0;
+
+	print "\t{";
+	print "\"{#SIPNAME}\":\"$sipname\",";
+	print "\"{#SIPHOST}\":\"$siphost\",";
+	print "\"{#SIPPORT}\":\"$sipport\",";
+	print "\"{#SIPSTATUS}\":\"$sipstatus\",";
+	print "\"{#SIPPING}\":\"$sipping\"}";
+}
+print "\n]\n}\n";
+
