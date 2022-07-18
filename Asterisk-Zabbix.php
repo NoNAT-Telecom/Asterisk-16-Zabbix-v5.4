@@ -1,12 +1,10 @@
 <?php
 /*
-Criado por: Ronaldo Sacco - ronaldo@saperx.com.br
-
 Script criado para facilitar a comunicacao entre ZABBIX e ASTERISK, utilizando AMI (Asterisk Manager Interface).
 Este script monitora:
 
-                "peerstatus peer   - Retorna o status de um determinado peer";
-                "peertime peer     - Retorna o tempo (qualify) de um determinado peer";
+                "peerstatus,peer   - Retorna o status de um determinado peer";
+                "peertime,peer     - Retorna o tempo (qualify) de um determinado peer";
                 "activecalls       - Retorna quantas chamadas estao em curso";
                 "longestcall       - Retorna o valor em minutos da chamada com mais tempo em duracao";
                 "onlinepeers       - Retorna a quantidade de SIP online";
@@ -25,7 +23,7 @@ Credenciais do manager
 Deve ser configurado as variaveis $MANAGER_ que seguem abaixo.
 */
 
-$MANAGER_user = 'ast-zabbix';
+$MANAGER_user = 'zabbix';
 $MANAGER_pass = 'Zero5292';
 $MANAGER_host = '127.0.0.1';
 $MANAGER_port = 5038;
