@@ -24,7 +24,7 @@ Deve ser configurado as variaveis $MANAGER_ que seguem abaixo.
 */
 
 $MANAGER_user = 'zabbix';
-$MANAGER_pass = 'Zero5292';
+$MANAGER_pass = '<MUDAR-SENHA>';
 $MANAGER_host = '127.0.0.1';
 $MANAGER_port = 5038;
 
