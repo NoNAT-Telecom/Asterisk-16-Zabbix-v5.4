@@ -1,15 +1,15 @@
 <?php
 /*
-Script criado para facilitar a comunica��o entre ZABBIX e ASTERISK, utilizando AMI (Asterisk Manager Interface).
+Script criado para facilitar a comunicação entre ZABBIX e ASTERISK, utilizando AMI (Asterisk Manager Interface).
 Este script monitora:
 
                 "peerstatus,peer   - Retorna o status de um determinado peer";
                 "peertime,peer     - Retorna o tempo (qualify) de um determinado peer";
-                "activecalls       - Retorna quantas chamadas est�o em curso";
-                "longestcall       - Retorna o valor em minutos da chamada com mais tempo em dura��o";
+                "activecalls       - Retorna quantas chamadas estão em curso";
+                "longestcall       - Retorna o valor em minutos da chamada com mais tempo em duração";
                 "onlinepeers       - Retorna a quantidade de SIP online";
 
-Modo de execu��o:
+Modo de execução:
 php ast_zabbix.php COMANDO SIP_PEER
 
 Exemplo:
@@ -31,7 +31,7 @@ $MANAGER_port = 5038;
 
 /*
 Inicio do codigo. 
-N�o alterar nada daqui para baixo.
+Não alterar nada daqui para baixo.
 */
 
 function manager_connect() {
@@ -302,20 +302,20 @@ switch($argv[1]){
 		echo "Help\n\n";
                 echo "peerstatus peer   - Retorna o status de um determinado peer\n";
                 echo "peertime peer     - Retorna o tempo (qualify) de um determinado peer\n";
-                echo "activecalls       - Retorna quantas chamadas estão em curso\n";
-                echo "asteriskrunning   - Retorna 1 se asterisk estiver rodando. Se não 0\n";
-                echo "longestcall       - Retorna o valor em minutos da chamada com mais tempo em duração\n";
+                echo "activecalls       - Retorna quantas chamadas estÃ£o em curso\n";
+                echo "asteriskrunning   - Retorna 1 se asterisk estiver rodando. Se nÃ£o 0\n";
+                echo "longestcall       - Retorna o valor em minutos da chamada com mais tempo em duraÃ§Ã£o\n";
                 echo "onlinepeers       - Retorna a quantidade de SIP online\n";
                 echo "\n";
-                echo "Modo de execução:\n";
+                echo "Modo de execuÃ§Ã£o:\n";
                 echo "/bin/php /var/local/zabbix-asterisk.php COMANDO SIP_PEER\n";
                 echo "\n";
                 echo "Exemplo:\n";
-                echo "/bin/php /var/local/zabbix-asterisk peerstatus 200\n";
+                echo "/bin/php /var/local/zabbix-asterisk.php peerstatus 200\n";
                 echo "\n";
                 break;
 
 	Default:
-		echo "Comando ".$argv[1]." não encontrado. Digite -h ou ? para saber mais\n\n";
+		echo "Comando ".$argv[1]." nÃ£o encontrado. Digite -h ou ? para saber mais\n\n";
 		break;
 }
