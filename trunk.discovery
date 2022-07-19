@@ -16,7 +16,7 @@ for (`cat /etc/asterisk/extensions_additional.conf | grep "OUT_[0-9]* = "`)
 	print "\"{#TRUNKNAMEFULL}\":\"$trunknamefull\"}";
 }
 
-for (`asterisk -rrrrx "sip show peers" | grep -v "Name" | grep -v "sip peers"`)
+for (`asterisk -rrrrx "sip show peers" | grep -v "Name" | grep -v "sip peers" | grep -E "[-_]"`)
 {
 	($trunknamehalf) = m/(\S*)/x;
 		$trunknamehalf =~ s/\/.*$//d;
