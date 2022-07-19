@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+ 
+$first = 1;
+
+print "{\n";
+print "\"data\":[\n"; 
+
+for (`asterisk -rrrrx "sip show peers" | grep -v "Name" | grep -v "sip peers" | grep -v "[-_]"`)
+{
+	($extennamefull)   = m/(\S*)/x;
+		$extennamefull =~ s/\/.*$//d;
+
+	print ",\n" if not $first;
+	$first = 0;
+
+	print "\t{";
+	print "\"{#EXTENNAMEFULL}\":\"$extennamefull\"}";
+}
+print "\n]\n}\n";
+
