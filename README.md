@@ -2,7 +2,7 @@
 
 ### Execute os camoandos abaixo no servidor Asterisk 16
 
--##### rpm -Uvh "http://repo.zabbix.com/zabbix/5.4/rhel/7/x86_64/zabbix-release-5.4-1.el7.noarch.rpm"
+##### rpm -Uvh "http://repo.zabbix.com/zabbix/5.4/rhel/7/x86_64/zabbix-release-5.4-1.el7.noarch.rpm"
 - yum install -y "zabbix-agent" "jq"
 - vim "/etc/zabbix/zabbix_agentd.conf"
 - cp "/etc/zabbix/zabbix_agentd.conf" "/etc/zabbix/zabbix_agentd.conf.orig"
