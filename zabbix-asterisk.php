@@ -23,7 +23,7 @@ Credenciais do manager
 Deve ser configurado as variaveis $MANAGER_ que seguem abaixo.
 */
 
-$MANAGER_user = 'zabbix';
+$MANAGER_user = 'zabbix-asterisk';
 $MANAGER_pass = '<MUDAR-SENHA>';
 $MANAGER_host = '127.0.0.1';
 $MANAGER_port = 5038;
