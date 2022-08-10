@@ -4,7 +4,6 @@
 
 - rpm -Uvh "http://repo.zabbix.com/zabbix/5.4/rhel/7/x86_64/zabbix-release-5.4-1.el7.noarch.rpm"
 - yum install -y "zabbix-agent" "jq"
-- vim "/etc/zabbix/zabbix_agentd.conf"
 - cp "/etc/zabbix/zabbix_agentd.conf" "/etc/zabbix/zabbix_agentd.conf.orig"
 - sed -i 's/Server=127.0.0.1/Server=127.0.0.1,192.168.0.13/g' "/etc/zabbix/zabbix_agentd.conf"
 - sed -i 's/Example: Server=127.0.0.1,192.168.0.13/Example: Server=127.0.0.1/g' "/etc/zabbix/zabbix_agentd.conf"
